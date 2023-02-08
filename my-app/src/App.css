@@ -4,7 +4,7 @@
 
 }
 .App{
-  background-color: grey;
+  background-color:#CDCDCD;
 }
 .container{
   max-width: 1200px;
@@ -20,4 +20,10 @@
   .Header_Right_Side{
       width: 100%;
   }
+}
+.TopIngr{
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  font-size: large;
 }

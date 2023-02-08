@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
 .Row{
     border-bottom: 2px solid black;
 }
@@ -12,26 +13,49 @@
     display: flex;
 
 }
-.FindRecepies>p{
-    margin-right: 30px;
-}
+
 .FilterRecepies{
     width:100%;
     margin-bottom: 25px;
     padding: 10px;
     display: flex;
     justify-content: center;
+    
 }
 select{
-    padding: 15px;
+    padding: 8px;
     font-size: 15px;
     border: 1px solid grey;
 }
 .FindRecepies{
+    padding: 5px;
  font-size: 20px;
     color: white;
     margin-left: 35px;
     background-color: #24AF30;
+}
+p{
+    text-align: center;
+    font-size: 20px;
+    font-family: 'Oswald', sans-serif; ;
+}
+.Main>h1{
+ text-align: center;
+ font-size: 30px;
+ margin-bottom: 20px;
+}
+.ThreeRows{
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.Rows{
+    width: 70px;
+   height: 3px;
+
+
 }
 
 

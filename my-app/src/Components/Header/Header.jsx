@@ -3,7 +3,7 @@ import './Header.css'
 import lupa from './lupa.png'
 import book from './book.png'
 import hat from './hat.png'
-import {Route,Routes,NavLink} from 'react-router-dom'
+import {Route,Routes,NavLink, Link} from 'react-router-dom'
 import MyBookOfRecepies from "../MyBookOfRecepies/MyBookOfRecepies";
 export default function Header({}){
 return (<div className="Header">
@@ -19,7 +19,7 @@ return (<div className="Header">
             <div className='Header_Right_Side'>
                 <div> 
                 <img src={lupa}></img>
-                    <button>Поиск по сайту</button></div>
+                    <button><Link to={'Register'}>Поиск по сайту</Link></button></div>
              <div>
                 <img src={book}></img>
                 <button>Моя книга рецептов</button></div>
