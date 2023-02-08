@@ -8,9 +8,6 @@ export default function Main({}) {
    const [Recepies,SetRecepies]=React.useState([])
     
   React.useEffect(() => {
-    axios.get('https://api.spoonacular.com/recipes/complexSearch?apiKey=b31827e8574a44e0ae4737c8ebc42229&query=beef&addRecipeInformation=true').then((res)=>{
-      console.log(res.data)
-    })
     axios
       .get("https://62f1591825d9e8a2e7cadc7b.mockapi.io/items")
       .then((res) => {
@@ -18,16 +15,16 @@ export default function Main({}) {
         SetTopDayProducts(TopDayProducts);
         SetBool(true);
       });
-      axios.get('https://api.spoonacular.com/recipes/findByIngredients?apiKey=b31827e8574a44e0ae4737c8ebc42229&ingredients=apples,+flour,+sugar&number=10').then((res)=>{
-        
-      })
   }, []);
-  React.useEffect(()=>{
-    axios.get('https:/www.themealdb.com/api/json/v1/1/filter.php?i=chicken_breast').then((res)=>{
-     SetRecepies(res.data.meals)
-  
-    })
- },[])
+    axios.get('https://api.spoonacular.com/recipes/findByIngredients?b31827e8574a44e0ae4737c8ebc42229&ingredients=apples,+flour,+sugar&number=2').then((res)=>{
+      console.log(res)
+      Recepies.push(...res.data.results)
+      SetBool(true)
+      alert(1)
+      SetRecepies(Recepies)
+      
+    },[])
+ 
   return (
     <div className="Main">
       <div className="Row"></div>
@@ -46,6 +43,7 @@ export default function Main({}) {
           <select className="SelectKitchen" onChange={(e) => {}}>
             <option value={"Любая кухня"} selected={true}>
               Любая кухня
+             
             </option>
             <option value={"Итальянская кухня"}>Итальянская кухня</option>
             <option value={"Русская кухня"}>Русская кухня</option>
@@ -101,7 +99,10 @@ export default function Main({}) {
       </div>
       <div className="Recepies">
         {Bool?Recepies.map((item)=>{
-          return <div className="Recepies_Recept">{item.strMeal}</div>
+          
+          return <div className="Recepies_Recept">{item.title}
+            <img src={item.image}></img>
+          </div>
         }):''}
       </div>
     </div>
