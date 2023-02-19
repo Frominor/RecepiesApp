@@ -26,7 +26,18 @@ export default function Register({}) {
           <br></br>
           <div className="Email">
             <img src={email}></img>
-            <input type={"email"} placeholder="Введите email"></input>
+            <input {...register('email',{
+              required:'Your email uncorrect',
+              
+             pattern:{
+              value:/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
+              message:'Write correct email'
+             }
+            })} 
+            type={"text"} placeholder="Введите email"></input>
+            {errors?.email&&(
+              <div className="Error">{errors.email.message}</div>
+            )}
           </div>
           <br></br>
           <div className="Password">

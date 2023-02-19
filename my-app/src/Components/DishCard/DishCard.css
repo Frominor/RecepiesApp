@@ -1,0 +1,26 @@
+.DishCard{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 50%;
+}
+.Img>img{
+    width: 350px;
+    height: 250px;
+    
+}
+.Img{
+    margin-left: 3%;
+    margin-bottom: 2%;
+}
+h6{
+    color: green;
+}
+h6:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+.AboutDish{
+    display: flex;
+    font-size: 20px;
+}

@@ -2,19 +2,20 @@ import React from "react";
 import "./Main.css";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
+import DishCard from "../DishCard/DishCard";
 export default function Main({}) {
  const dispatch=useDispatch()
- const Recipes=useSelector((state)=>state.Recepies)
+ let Recipes=useSelector((state)=>state.Recepies)
  const Diet=useSelector((state)=>state.Diet)
  const Category=useSelector((state)=>state.Category)
  const Cuisine=useSelector((state)=>state.cuisine)
    async  function  getRandomProducts (){
-    let response= await fetch('https://api.spoonacular.com/recipes/random?apiKey=b31827e8574a44e0ae4737c8ebc42229&number=10')
+    let response= await fetch('https://api.spoonacular.com/recipes/random?apiKey=b31827e8574a44e0ae4737c8ebc42229&addRecipeNutrition=true&addRecipeInformation=true&number=10')
          let data=await response.json()
         dispatch({type:'ADD_RECEPIES',payload:data.recipes})
      }
   React.useEffect(()=>{
-
+getRandomProducts()
   },[])
  
   return (
@@ -59,7 +60,7 @@ export default function Main({}) {
          
         </div>
         <button className="FindRecepies" onClick={async()=>{
-          const respone=await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=b31827e8574a44e0ae4737c8ebc42229&diet=${Diet}&cuisine=${Cuisine}&type=${Category}&addRecipeInformation=true&number=10`)
+          const respone=await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=b31827e8574a44e0ae4737c8ebc42229&diet=${Diet}&cuisine=${Cuisine}&type=${Category}&addRecipeInformation=true&addRecipeNutrition=true&number=10`)
           const data=await respone.json()
           console.log(data)
           dispatch({type:'ADD_RECEPIES',payload:data.results})
@@ -87,12 +88,13 @@ export default function Main({}) {
         <br></br>
       </div>
       <div className="FindedRecepies">
-        <p>Найдено рецептов </p> Сортировать по:                    
+        <p>Найдено {Recipes.length} рецептов  </p> Сортировать по:                    
         <ul className="SortBy">
-                  <li className="SortButton Relevantnost unactive">по релевантности</li> <li className=" SortButton Popular" onClick={(e)=>{
+                   <li className=" SortButton Popular unactive" onClick={(e)=>{
                     let collection=document.getElementsByClassName('SortButton')
+                  
                     for(let k of collection){
-                      if(k.innerHTML==e.target.value){
+                      if(k.innerHTML==e.target.innerHTML){
                         k.classList.remove('unactive')
                         k.classList.add('active')
                       }else{
@@ -102,20 +104,21 @@ export default function Main({}) {
                     }
                     for(let i=0;i<Recipes.length;i++){
                       for(let k =i+1;k<Recipes.length;k++){
-                        if(Recipes[i].aggregateLikes<Recipes[k].aggregateLikes){
+                      
+                        if(Math.floor(Recipes[i].pricePerServing)<Math.floor(Recipes[k].pricePerServing)){
                           let float=Recipes[k]
                           Recipes[k]=Recipes[i]
                           Recipes[i]=float
                         }
                       }
                     }
-                    
+                    Recipes=[...Recipes]
                     dispatch({type:'ADD_RECEPIES',payload:Recipes})
-                  }} >по популярности</li>
-                    <li className="SortButton Calorie" onClick={(e)=>{
+                  }} >по цене</li>
+                    <li className="SortButton Calorie unactive" onClick={(e)=>{
                       let collection=document.getElementsByClassName('SortButton')
                       for(let k of collection){
-                        if(k.innerHTML==e.target.value){
+                        if(k.innerHTML==e.target.innerHTML){
                           k.classList.remove('unactive')
                           k.classList.add('active')
                         }else{
@@ -125,23 +128,23 @@ export default function Main({}) {
                       }
                       for(let i=0;i<Recipes.length;i++){
                         for(let k =i+1;k<Recipes.length;k++){
-                          if(Recipes[i].aggregateLikes<Recipes[k].aggregateLikes){
+                          console.log(Recipes)
+                          if(Recipes[i].nutrition.nutrients[0].amount <Recipes[k].nutrition.nutrients[0].amount){
                             let float=Recipes[k]
                             Recipes[k]=Recipes[i]
                             Recipes[i]=float
                           }
                         }
                       }
-                      
+                         Recipes=[...Recipes]
                       dispatch({type:'ADD_RECEPIES',payload:Recipes})
                     }}>по калорийности</li>
         </ul>
       </div>
       <div className="Recepies">
         {Recipes.map((item)=>{
-          return <div className="Recepies_Recept">{item.title}
-            <img src={item.image}></img>
-          </div>
+          console.log(item)
+          return <DishCard title={item.title} img={item.image} dishTypes={item.dishTypes} cuisines={item.cuisines} servings={item.servings} pricePerServing={item.pricePerServing}></DishCard>
         })}
       </div>
     </div>

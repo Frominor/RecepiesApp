@@ -63,8 +63,9 @@ p{
 }
 .unactive{
     color: lightgray;
-    cursor: default;
+    cursor: pointer;
 }
 .active{
-    cursor: pointer;
+    color: black;
+    cursor: default;
 }

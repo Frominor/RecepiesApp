@@ -15,6 +15,14 @@
       justify-content: space-around;
     margin-top: 10px;     
 }
+.Header_menu>li:hover{
+  color: red;
+  cursor: pointer;
+}
+.Header_Left_Side>h1:hover{
+  cursor: pointer;
+  color: red;
+}
 .Header_Right_Side{
     padding: 0 10px;
     width: 50%;
