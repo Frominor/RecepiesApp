@@ -2,6 +2,7 @@
 .Header{
     width: 100%;
     display: flex;
+    padding: 12px;
 }
 .Header_Left_Side{
     display: flex;
@@ -52,22 +53,28 @@ img{
 .SignIn>img{
     margin-right: 10px;
 }
-.m
+
 .my-node-enter {
-    opacity: 0;
-    transition: 600ms;
-    transform: scale(0.6);
+  transform: scale(0.2);
+}
+.my-node-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transform: translateY(0);
+  transition: opacity 400ms, transform 400ms;
+}
+.my-node-exit {
+  opacity: 1;
+}
+.my-node-exit-active {
+  opacity: 0;
+  transform: scale(0);
+  transition: opacity 300ms, transform 300ms;
+}
+  a{
+    text-decoration: none;
+    color: black;
   }
-  .my-node-enter-active {
-    opacity: 1;
-    transform: scale(0.6);
-    transition: opacity 300ms, transform 300ms;
-  }
-  .my-node-exit {
-    opacity: 1;
-  }
-  .my-node-exit-active {
-    opacity: 0;
-    transform: scale(0.9);
-    transition: opacity 300ms, transform 300ms;
+  a:hover{
+    color: red;
   }

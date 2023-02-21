@@ -1,13 +1,14 @@
 .RegisterIcon{
     position: fixed;
-    width: 70%;
+    width: 64.2%;
+    top: 0;
+    left: 17.9%;
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 1;
+    opacity:0.9;
     height: 100%;
-
-    background-color:white
+    background-color:rgba(52, 59, 76, 0.8);
 }
 .RegOrLog{
     position: relative;
@@ -31,39 +32,41 @@ input{
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 .btnLogReg{
+    width: 69%;
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-end;
     padding: 7px
+
 }
-.btn_Reg{
+
+.btn_Log{
     color: white;
     padding: 15px;
     border-radius: 5px;
     background: #DB5966;
-}
-.btn_Log{
     border: 1px solid ;
-    width: 100px;
-    border-radius: 5px;
+    width: 300px;
 }
 form{
     display: flex;
     flex-direction: column;
+    position: relative;
     justify-content: center;
     border-radius: 5px;
+    background-color: #F6FAFB;
     text-align: center;
     -webkit-box-shadow: 4px 4px 13px 12px rgba(34, 60, 80, 0.2);
--moz-box-shadow: 4px 4px 13px 12px rgba(34, 60, 80, 0.2);
-box-shadow: 4px 4px 13px 12px rgba(34, 60, 80, 0.2);
-    width: 80%;
-    height:80%;
+    -moz-box-shadow: 4px 4px 13px 12px rgba(34, 60, 80, 0.2);
+    box-shadow: 4px 4px 13px 12px rgba(34, 60, 80, 0.2);
+    width: 70%;
+    height:50%;
     border: 1px solid;
 }
 .btn_Reg:hover{
     background-color:#C13D4A
 }
 .btn_Log:hover{
-background-color: #EAEAEA
+background-color: #000000
 }
 .Name,.Email,.Password,.Confirm_password{
     display: flex;
@@ -80,6 +83,14 @@ form>h1{
     margin-bottom: 30px;
 }
 .Error{
+    position: absolute;
     color: red;
+    right: 8%
+}
+.email{
+    right: 11.5%;
+}
+.name{
+    right: 11.5%;
 }
 

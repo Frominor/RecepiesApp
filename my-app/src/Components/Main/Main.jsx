@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import DishCard from "../DishCard/DishCard";
 export default function Main({}) {
  const dispatch=useDispatch()
- let Recipes=useSelector((state)=>state.Recepies)
+ const Recipes=useSelector((state)=>state.Recepies)
  const Diet=useSelector((state)=>state.Diet)
  const Category=useSelector((state)=>state.Category)
  const Cuisine=useSelector((state)=>state.cuisine)
@@ -15,7 +15,7 @@ export default function Main({}) {
         dispatch({type:'ADD_RECEPIES',payload:data.recipes})
      }
   React.useEffect(()=>{
-getRandomProducts()
+
   },[])
  
   return (
@@ -88,7 +88,7 @@ getRandomProducts()
         <br></br>
       </div>
       <div className="FindedRecepies">
-        <p>Найдено {Recipes.length} рецептов  </p> Сортировать по:                    
+        <p>Найдено {Recipes.length} рецептов</p>Сортировать по:                    
         <ul className="SortBy">
                    <li className=" SortButton Popular unactive" onClick={(e)=>{
                     let collection=document.getElementsByClassName('SortButton')
@@ -136,16 +136,18 @@ getRandomProducts()
                           }
                         }
                       }
-                         Recipes=[...Recipes]
                       dispatch({type:'ADD_RECEPIES',payload:Recipes})
                     }}>по калорийности</li>
         </ul>
       </div>
       <div className="Recepies">
         {Recipes.map((item)=>{
-          console.log(item)
-          return <DishCard title={item.title} img={item.image} dishTypes={item.dishTypes} cuisines={item.cuisines} servings={item.servings} pricePerServing={item.pricePerServing}></DishCard>
+          console.log(item.nutrition?.ingredients)
+          return <DishCard title={item.title} img={item.image} dishTypes={item.dishTypes} cuisines={item.cuisines} servings={item.servings} pricePerServing={item.pricePerServing} extendedIngredients={item.extendedIngredients} ingridients={item.nutrition?.ingridients} aggregateLikes={item.aggregateLikes}          ></DishCard>
         })}
+      </div>
+      <div className="Footer">
+        
       </div>
     </div>
   );

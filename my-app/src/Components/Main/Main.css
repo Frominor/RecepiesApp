@@ -1,25 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
 .Row{
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid lightgray 
 }
 .SortBy{
     display: flex;
     list-style-type: none;
+    align-items: center;
 }
 .SortBy>li{
     margin-left: 10px;
 }
 .FindedRecepies{
     display: flex;
+    align-items: center;
+    padding: 15px;
 
+}
+.FindedRecepies>ul{
+    margin-left: 40px;
 }
 
 .FilterRecepies{
     width:100%;
-    margin-bottom: 25px;
+    margin: 40px 0px 20px 0px;
     padding: 10px;
     display: flex;
     justify-content: center;
+    align-items: center;
     
 }
 select{
@@ -27,12 +34,19 @@ select{
     font-size: 15px;
     border: 1px solid grey;
 }
+option{
+    width: 300px;
+}
 .FindRecepies{
-    padding: 5px;
+    padding: 10px;
  font-size: 20px;
+ border-radius: 10px;
     color: white;
     margin-left: 35px;
     background-color: #24AF30;
+}
+.FindRecepies:hover{
+    background-color: #1e7425;
 }
 p{
     text-align: center;
