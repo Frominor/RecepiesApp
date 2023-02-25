@@ -17,7 +17,7 @@ return (<div className="Header">
          <Register></Register>
    </CSSTransition>
      <div className='Header_Left_Side'>
-          <h1><Link to={'*'}>Еда</Link></h1>
+          <h1 ><Link to={'/'}>Еда</Link></h1>
           <ul className='Header_menu'>
             <li>Рецепты</li>
             <li><a href="https://eda.ru/journal" target={'_blank'}>Журнал "Еда"</a></li>

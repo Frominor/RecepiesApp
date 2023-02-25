@@ -1,11 +1,10 @@
 import React from "react";
 import "./Main.css";
-import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import DishCard from "../DishCard/DishCard";
 export default function Main({}) {
  const dispatch=useDispatch()
- const Recipes=useSelector((state)=>state.Recepies)
+ let Recipes=useSelector((state)=>state.Recepies)
  const Diet=useSelector((state)=>state.Diet)
  const Category=useSelector((state)=>state.Category)
  const Cuisine=useSelector((state)=>state.cuisine)
@@ -15,7 +14,7 @@ export default function Main({}) {
         dispatch({type:'ADD_RECEPIES',payload:data.recipes})
      }
   React.useEffect(()=>{
-
+getRandomProducts()
   },[])
  
   return (
@@ -31,7 +30,9 @@ export default function Main({}) {
             </option>
             <option value={"dessert"}>Desserts</option>
             <option value={"dinner"}>Dinners</option>
-            <option value={"lunch"}>Lunch</option>
+            <option value={"breakfast"}>Breakfast</option>
+            <option value={"snack"}>Snack</option>
+            <option value={"main course"}>Main course</option>
           </select>
         </div>
         <div className="select">
@@ -44,18 +45,20 @@ export default function Main({}) {
             <option value={"Italian"}>Italian  kitchen</option>
             <option value={"Russian"}>Russian kitchen</option>
             <option value={"French"}>French kitchen</option>
+            <option value={"German"}>German kitchen</option>
+            <option value={"American"}>American kitchen</option>
+            <option value={"English"}>English kitchen</option>
           </select>
         </div>
         <div className="select">
           <select className="SelectDiet" onChange={(e)=>{
             dispatch({type:'ADD_DIET',payload:e.target.value})
           }}>
-            <option value={" "} selected={true}>
-              Any Diet
-            </option>
+            <option value={" "} selected={true}>Any Diet</option>
             <option value={"Vegan"}>Vegan</option>
             <option value={"Vegetarian"}>Vegetarian</option>
-            <option value={"Обычная диета"}>Gluten Free</option>
+            <option value={"Gluten Free"}>Gluten Free</option>
+            <option value={"Paleo"}>Paleo</option>
           </select>
          
         </div>
@@ -136,14 +139,14 @@ export default function Main({}) {
                           }
                         }
                       }
+                      Recipes=[...Recipes]
                       dispatch({type:'ADD_RECEPIES',payload:Recipes})
                     }}>по калорийности</li>
         </ul>
       </div>
       <div className="Recepies">
         {Recipes.map((item)=>{
-          console.log(item.nutrition?.ingredients)
-          return <DishCard title={item.title} img={item.image} dishTypes={item.dishTypes} cuisines={item.cuisines} servings={item.servings} pricePerServing={item.pricePerServing} extendedIngredients={item.extendedIngredients} ingridients={item.nutrition?.ingridients} aggregateLikes={item.aggregateLikes}          ></DishCard>
+          return <DishCard title={item.title} img={item.image} dishTypes={item.dishTypes} cuisines={item.cuisines} servings={item.servings} pricePerServing={item.pricePerServing} aggregateLikes={item.aggregateLikes}></DishCard>
         })}
       </div>
       <div className="Footer">

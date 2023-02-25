@@ -12,7 +12,9 @@ const initialState={
     cuisine:'',
     TopDayProducts:[],
     Recepies:[],
-    OpenClosePopup:false
+    OpenClosePopup:false,
+    YourRecepies:[],
+    Ingredients:[]
 }
 const  reducer=(state=initialState,action)=>{
     switch(action.type){
@@ -21,6 +23,8 @@ const  reducer=(state=initialState,action)=>{
      case  'ADD_CUISINE':return {...state,cuisine:action.payload}
      case 'ADD_RECEPIES':return {...state,Recepies:action.payload}
      case 'CHANGE_POPUP':return {...state,OpenClosePopup:action.payload}
+     case 'ADD_YOURRECEPIES':return{...state,YourRecepies:action.payload}
+     case 'ADD_INGREDIENTS':return {...state,Ingredients:action.payload}
      default:return state
     }
     }

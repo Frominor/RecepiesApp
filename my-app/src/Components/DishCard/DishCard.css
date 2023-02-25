@@ -28,6 +28,25 @@ h6:hover{
     width: 20%;
     justify-content: space-between;
 }
+.ServingsAndIngridients{
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    width:55%;
+}
 .Servings{
+    display: flex;
+}
+.Ingridients{
+    display: flex;
+}
+.CuisinesAndTypes{
+    display: flex;
+  
+    width: 30%;
+    justify-content: space-around;
+}
+.Price{
+    padding: 5px;
     display: flex;
 }

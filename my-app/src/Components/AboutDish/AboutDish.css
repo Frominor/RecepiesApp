@@ -1,0 +1,36 @@
+.Recepies{
+    width: 100%;
+}
+.Title{
+    text-align: center;
+}
+.CategoriesButtons{
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+    list-style-type:none;
+}
+.Categories{
+    display: flex;
+    justify-content: center;
+    padding: 70px;
+}
+.CategoriesButtons>li{
+    color: green;
+}
+.CategoriesButtons>li:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+.Nutrition{
+    display: flex;
+    width: 50%;
+    margin: 0 auto;
+    font-size: 10px;
+    font-weight: 100;
+    font-family: Arial, Helvetica, sans-serif;
+    justify-content: space-between;
+}
+.Plus:hover{
+ cursor: pointer;
+}
