@@ -30,7 +30,7 @@ return (<div className="Header">
                     <button>Поиск по сайту</button></div>
              <div>
                 <img src={book}></img>
-                <button><Link to={'MyBookOfRecepies'}>Моя книга рецептов</Link></button></div>
+                <button><Link to={'mybookofrecepies'}>Моя книга рецептов</Link></button></div>
               <div className="SignIn"> 
                 <img src={hat}></img>
                 <button onClick={()=>{

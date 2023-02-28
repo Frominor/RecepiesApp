@@ -2,9 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import thunk from 'redux-thunk'
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router-dom'
-import {createStore} from 'redux'
+import {applyMiddleware, createStore} from 'redux'
+import {composeWithDevTools} from 'redux-devtools-extension'
 import { Provider } from 'react-redux';
 const initialState={
     Category:'',
@@ -14,7 +16,8 @@ const initialState={
     Recepies:[],
     OpenClosePopup:false,
     YourRecepies:[],
-    Ingredients:[]
+    Ingredients:[],
+    isActive:false
 }
 const  reducer=(state=initialState,action)=>{
     switch(action.type){
@@ -23,14 +26,16 @@ const  reducer=(state=initialState,action)=>{
      case  'ADD_CUISINE':return {...state,cuisine:action.payload}
      case 'ADD_RECEPIES':return {...state,Recepies:action.payload}
      case 'CHANGE_POPUP':return {...state,OpenClosePopup:action.payload}
-     case 'ADD_YOURRECEPIES':return{...state,YourRecepies:action.payload}
-     case 'ADD_INGREDIENTS':return {...state,Ingredients:action.payload}
+     case 'ADD_YOURRECEPIES': return{...state,YourRecepies:action.payload}
+     case 'ADD_INGREDIENTS': return {...state,Ingredients:action.payload}
+     case 'CHANGE_ACTIVE':return {...state,isActive:action.payload}
      default:return state
     }
     }
+    
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-const store=createStore(reducer)
+const store=createStore(reducer,composeWithDevTools(applyMiddleware(thunk)))
 root.render(
     <Provider store={store}>
 <BrowserRouter>

@@ -13,9 +13,10 @@ function App() {
       <div className='container'>
       <Header></Header>
      <Routes>
-      <Route path='MyBookOfRecepies' element={<MyBookOfRecepies></MyBookOfRecepies>}></Route>
-      <Route path='AboutDish' element={<AboutDish></AboutDish>}></Route>
-      <Route path='/' element={ <Main></Main>}></Route>
+     <Route  index element={ <Main></Main>}></Route>
+      <Route path='mybookofrecepies' element={<MyBookOfRecepies></MyBookOfRecepies>}></Route>
+      <Route path='aboutdish' element={<AboutDish></AboutDish>}></Route>
+      
       
      </Routes>
       </div>

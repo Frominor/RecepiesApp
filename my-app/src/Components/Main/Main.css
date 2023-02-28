@@ -71,10 +71,6 @@ p{
 
 
 }
-
-.SortBy>li{
-    cursor: pointer;
-}
 .unactive{
     color: lightgray;
     cursor: pointer;
