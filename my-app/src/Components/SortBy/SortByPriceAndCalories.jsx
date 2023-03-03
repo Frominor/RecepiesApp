@@ -4,6 +4,7 @@ export default function SortByPriceAndCalories({}){
     const dispatch=useDispatch()
     const State=useSelector((state)=>state)
     const Filter=()=>{
+      if(!State.isAdded){
         if(!State.isActive){
           for(let i=0;i<State.Recepies.length;i++){
             for(let k =i+1;k<State.Recepies.length;k++){
@@ -17,20 +18,52 @@ export default function SortByPriceAndCalories({}){
           let filteredRecepies=[...State.Recepies]
           dispatch({type:'ADD_RECEPIES',payload:filteredRecepies})
         }else{
-          for(let i=0;i<State.Recepies.length;i++){
-            for(let k =i+1;k<State.Recepies.length;k++){
-              if(State.Recepies[i].nutrition.nutrients[0].amount <State.Recepies[k].nutrition.nutrients[0].amount){
-                let float=State.Recepies[k]
+          for(let i=0;i<State?.Recepies.length;i++){
+            for(let k =i+1;k<State?.Recepies?.length;k++){
+              if(State?.Recepies[i]?.nutrition?.nutrients[0]?.amount <State?.Recepies[k]?.nutrition?.nutrients[0]?.amount){
+                let float=State?.Recepies[k]
                 State.Recepies[k]=State.Recepies[i]
                 State.Recepies[i]=float
               }
             }
           }
+         
           let filteredRecepies=[...State.Recepies]
           dispatch({type:'ADD_RECEPIES',payload:filteredRecepies})
         }
         dispatch({type:'CHANGE_ACTIVE',payload:!State.isActive})
-    }
+       }else{
+        if(!State.isActive){
+          for(let i=0;i<State.YourRecepies.length;i++){
+            for(let k =i+1;k<State.YourRecepies.length;k++){
+              if(Math.floor(State.YourRecepies[i].pricePerServing)<Math.floor(State.YourRecepies[k].pricePerServing)){
+                let float=State.YourRecepies[k]
+                State.YourRecepies[k]=State.YourRecepies[i]
+                State.YourRecepies[i]=float
+              }
+            }
+          }
+          let filteredRecepies=[...State.YourRecepies]
+          dispatch({type:'ADD_RECEPIES',payload:filteredRecepies})
+        }else{
+          for(let i=0;i<State?.YourRecepies.length;i++){
+            for(let k =i+1;k<State?.YourRecepies?.length;k++){
+              if(State?.YourRecepies[i]?.nutrition?.nutrients[0]?.amount <State?.YourRecepies[k]?.nutrition?.nutrients[0]?.amount){
+                let float=State?.YourRecepies[k]
+                State.YourRecepies[k]=State.YourRecepies[i]
+                State.YourRecepies[i]=float
+              }
+            }
+          }
+         
+          let filteredRecepies=[...State.YourRecepies]
+          dispatch({type:'ADD_RECEPIES',payload:filteredRecepies})
+        }
+        dispatch({type:'CHANGE_ACTIVE',payload:!State.isActive})
+       }
+       }
+      
+      
     return<div className="FindedRecepies">          
     <ul className="SortBy">
         <p>Сортировать:</p>

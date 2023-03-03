@@ -9,15 +9,17 @@ import {applyMiddleware, createStore} from 'redux'
 import {composeWithDevTools} from 'redux-devtools-extension'
 import { Provider } from 'react-redux';
 const initialState={
-    Category:'',
-    Diet:'',
-    cuisine:'',
+    Category:[],
+    Diet:[],
+    cuisine:[],
     TopDayProducts:[],
     Recepies:[],
     OpenClosePopup:false,
     YourRecepies:[],
-    Ingredients:[],
-    isActive:false
+    FilteredRecepies:[],
+    Ingredients:null,
+    isActive:false,
+    isAdded:false
 }
 const  reducer=(state=initialState,action)=>{
     switch(action.type){
@@ -26,9 +28,11 @@ const  reducer=(state=initialState,action)=>{
      case  'ADD_CUISINE':return {...state,cuisine:action.payload}
      case 'ADD_RECEPIES':return {...state,Recepies:action.payload}
      case 'CHANGE_POPUP':return {...state,OpenClosePopup:action.payload}
-     case 'ADD_YOURRECEPIES': return{...state,YourRecepies:action.payload}
+     case 'ADD_YOURRECEPIES': return {...state,YourRecepies:action.payload}
      case 'ADD_INGREDIENTS': return {...state,Ingredients:action.payload}
      case 'CHANGE_ACTIVE':return {...state,isActive:action.payload}
+     case 'ADD_RECEPT':return {...state,isAdded:action.payload}
+     case 'FILTER_RECEPIES':return{...state,FilteredRecepies:[...state.FilteredRecepies,action.payload]}
      default:return state
     }
     }

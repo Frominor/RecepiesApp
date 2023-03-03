@@ -4,11 +4,13 @@ import lupa from './lupa.png'
 import book from './book.png'
 import hat from './hat.png'
 import {Route,Routes,NavLink, Link} from 'react-router-dom'
-import MyBookOfRecepies from "../MyBookOfRecepies/MyBookOfRecepies";
 import {CSSTransition} from 'react-transition-group'
 import Register from "../Register/Register";
 import { useDispatch, useSelector } from "react-redux";
 export default function Header({}){
+const OpenLogWindow=()=>{
+  dispatch({type:'CHANGE_POPUP',payload:!OpenClosePopup})
+}
   const dispatch=useDispatch()
   const OpenClosePopup=useSelector((state)=>state.OpenClosePopup)
   const noderef=React.useRef(null)
@@ -30,12 +32,10 @@ return (<div className="Header">
                     <button>Поиск по сайту</button></div>
              <div>
                 <img src={book}></img>
-                <button><Link to={'mybookofrecepies'}>Моя книга рецептов</Link></button></div>
+                <button ><Link to={'mybookofrecepies'}>Моя книга рецептов</Link></button></div>
               <div className="SignIn"> 
                 <img src={hat}></img>
-                <button onClick={()=>{
-                 dispatch({type:'CHANGE_POPUP',payload:!OpenClosePopup})
-                }}>Войти</button></div>
+                <button onClick={OpenLogWindow}>Войти</button></div>
              
           
             

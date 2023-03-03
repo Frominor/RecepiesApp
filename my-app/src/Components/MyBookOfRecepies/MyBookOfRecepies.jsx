@@ -6,24 +6,26 @@ import SortByPriceAndCalories from "../SortBy/SortByPriceAndCalories";
 import "./MyBookOfRecepies.css";
 import pan from "./pan.png";
 export default function MyBookOfRecepies({}) {
-  const dispatch = useDispatch();
   const State = useSelector((state) => state);
-  console.log(State);
-  const Recipes = useSelector((state) => state.Recepies);
-  const Cuisine = useSelector((state) => state.cuisine);
+  const dispatch=useDispatch()
+ 
+  React.useEffect(()=>{
+    dispatch({type:'ADD_RECEPT',payload:true})
+  },[])
   return (
     <div className="MyBookOfRecepies">
       <div className="Text">
         <h1>Моя книга рецептов</h1>
         <h5>то,что я люблю</h5>
       </div>
-      <FindBySettings></FindBySettings>
+      <FindBySettings State={State}></FindBySettings>
       <div className="Row"></div>
       <SortByPriceAndCalories></SortByPriceAndCalories>
       <div>
-        {Recipes.length > 0 ? (
-          Recipes.map((item) => {
-            <DishCard
+        {State?.YourRecepies?.length > 0 ? (
+          State?.YourRecepies?.map((item) => {
+                {console.log(item)}
+          return <DishCard
               key={item.title}
               title={item.title}
               img={item.image}
@@ -40,8 +42,7 @@ export default function MyBookOfRecepies({}) {
           <div className="Empty">
             <img src={pan}></img>
             <h3>
-              Мы не нашли ничего по вашему запросу, попробуйте изменить
-              параметры фильтра.
+              Ваша книга рецептов пуста.
             </h3>
           </div>
         )}

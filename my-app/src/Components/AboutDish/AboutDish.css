@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;300;400&family=Oswald&family=Roboto+Condensed&display=swap');
 .Recepies{
     width: 100%;
 }
@@ -13,7 +14,8 @@
 .Categories{
     display: flex;
     justify-content: center;
-    padding: 70px;
+    padding: 40px;
+    padding-bottom: 0px;
 }
 .CategoriesButtons>li{
     color: green;
@@ -22,7 +24,7 @@
     cursor: pointer;
     text-decoration: underline;
 }
-.Nutrition{
+.NutritionDescription{
     display: flex;
     width: 50%;
     margin: 0 auto;
@@ -33,4 +35,45 @@
 }
 .Plus:hover{
  cursor: pointer;
+}
+.InstructionSide>h3{
+  
+    font-size: 25px;
+    font-family: emoji;
+}
+.InstructionSide>h2{
+    padding: 10px;
+
+}
+.InstructionSide>p{
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 30px;
+    text-align: left;
+}
+.Recepies>h3{
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+}
+.Nutrient{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.Nutrient>h3{
+    padding:30px;
+    font-size: 25px;
+}
+.NutrientsAndIngridients{
+    display: flex;
+    align-items: center;
+}
+.Recepies>h2{
+    width: 50%;
+    text-align: center;
+    margin-top: 30px;
+}
+.Ingridients{
+    width: 50%;
+    font-size: 20px;
+    align-items: center;
 }

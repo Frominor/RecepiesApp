@@ -23,44 +23,51 @@ console.log(DishInfo)
          <div className="Title">
         <h1>{DishInfo?.title}</h1>
          </div>
-         <div className="Nutrition">
-          <h2>Энергетическая ценность на порцию</h2>
-          <div className="Calories">
+         <h2>Energy value per serving</h2>
+         <div className="NutrientsAndIngridients">
+         <div className="NutritionDescription">
+          <div className="Nutrient Calories">
             <h3>Calories</h3>
             <h3>{DishInfo?.nutrition?.nutrients[0]?.amount}</h3>
           </div>
-          <div className="Protein">
+          <div className="Nutrient Protein">
              <h3>Protein</h3>
              <h3>{DishInfo?.nutrition?.nutrients[8]?.amount}</h3>
           </div>
-          <div className="Carbs">
+          <div className="Nutrient Carbs">
             <h3>Carbs</h3>
             <h3>{DishInfo?.nutrition?.nutrients[3]?.amount}</h3>
           </div>
-          <div className="Fat">
+          <div className="Nutrient Fat">
             <h3>Fat</h3>
             <h3>{DishInfo?.nutrition?.nutrients[1]?.amount}</h3>
           </div>
          </div>
-         <div className="Ingridients">
+         <div className="Nutrient Ingridients">
           <div>
-            <h3>Ингридиенты</h3>
-            <p onClick={()=>{
-               for(let k of  DishInfo?.nutrition?.ingredients){
-                       k.amount=k.amount-k.amount
-                 }
-                 dispatch({type:'ADD_CATEGORY',payload:[]})
-            }} className="Munis">-</p>
-            <p onClick={()=>{
-               for(let k of DishInfo?.nutrition?.ingredients){
-                k.amount=k.amount+k.amount
-               }
-               alert(1)
-               dispatch({type:'ADD_CATEGORY',payload:[]})
-            }} className="Plus">+</p>
+            <h3>Ingridients</h3>
           </div>
           {DishInfo?.nutrition?.ingredients?.map((item)=>{
-            return <h5>{item.name} {item.amount}</h5>
+            return <h5>{item.name} {item.amount} {item.unit}</h5>
+          })}
+         </div>
+         </div>
+         <h3>Cooking instructions</h3>
+         <div className="HowToCook">
+          {DishInfo?.analyzedInstructions?.map((item)=>{
+            let StepCount=0
+            return  item.steps.map((item)=>{
+              StepCount++
+              
+                return <div className="InstructionBox">
+                  <div className="InstructionSide">
+                    <h2>Step {StepCount}:</h2>
+                        <p>{item.step}</p>
+                  </div>
+                  
+                  <br></br>
+                </div>
+               })
           })}
          </div>
         </div>

@@ -8,42 +8,22 @@ import {GetRandomProducts} from "../asyncActions/GetRandomProducts";
 export default function Main({}) {
  const dispatch=useDispatch()
  const State=useSelector((state)=>state)
-     const Filter=()=>{
-      if(!State.isActive){
-        for(let i=0;i<State.Recepies.length;i++){
-          for(let k =i+1;k<State.Recepies.length;k++){
-            if(Math.floor(State.Recepies[i].pricePerServing)<Math.floor(State.Recepies[k].pricePerServing)){
-              let float=State.Recepies[k]
-              State.Recepies[k]=State.Recepies[i]
-              State.Recepies[i]=float
-            }
-          }
-        }
-        let filteredRecepies=[...State.Recepies]
-        dispatch({type:'ADD_RECEPIES',payload:filteredRecepies})
-      }else{
-        for(let i=0;i<State.Recepies.length;i++){
-          for(let k =i+1;k<State.Recepies.length;k++){
-            if(State.Recepies[i].nutrition.nutrients[0].amount <State.Recepies[k].nutrition.nutrients[0].amount){
-              let float=State.Recepies[k]
-              State.Recepies[k]=State.Recepies[i]
-              State.Recepies[i]=float
-            }
-          }
-        }
-        let filteredRecepies=[...State.Recepies]
-        dispatch({type:'ADD_RECEPIES',payload:filteredRecepies})
-      }
-      dispatch({type:'CHANGE_ACTIVE',payload:!State.isActive})
-     }
+
+     const fetchRandomRecepies=()=>{
+      dispatch(GetRandomProducts())
+    }
+    function ShowAddButton(){
+      dispatch({type:'ADD_RECEPT',payload:false})
+    }
   React.useEffect(()=>{
 
+  ShowAddButton()
   },[])
  
   return (
     <div className="Main">
       <div className="Row"></div>
-      <FindBySettings></FindBySettings>
+      <FindBySettings State={State}></FindBySettings>
       <h1>Рецепты</h1>
       <p>
         Ищите рецепты, выбирая категорию блюда, его подкатегорию, кухню или
@@ -67,12 +47,11 @@ export default function Main({}) {
       </div>
          <SortByPriceAndCalories></SortByPriceAndCalories>
       <div className="Recepies">
-        {State.Recepies.map((item,id)=>{
-          return <DishCard key={id} title={item.title} img={item.image} dishTypes={item.dishTypes} cuisines={item.cuisines} servings={item.servings} pricePerServing={item.pricePerServing} aggregateLikes={item.aggregateLikes}></DishCard>
+        {State.Recepies.map((item)=>{
+          return <DishCard State={State} key={item.id} id={item.id} title={item.title} img={item.image} dishTypes={item.dishTypes} cuisines={item.cuisines} servings={item.servings} pricePerServing={item.pricePerServing} aggregateLikes={item.aggregateLikes}></DishCard>
         })}
       </div>
       <div className="Footer">
-        
       </div>
     </div>
   );

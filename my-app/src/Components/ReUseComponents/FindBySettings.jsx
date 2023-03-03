@@ -1,7 +1,8 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { FindFullInfoRecepies } from "../asyncActions/FindFullInfoRecepies";
-export default function FindBySettings() {
+export default function FindBySettings({State}) {
+  console.log(State.isAdded)
   const dispatch = useDispatch();
   const SelectFoodCategory = (e) => {
     dispatch({ type: "ADD_CATEGORY", payload: e.target.value });
@@ -12,6 +13,24 @@ export default function FindBySettings() {
   const SelectDiet = (e) => {
     dispatch({ type: "ADD_DIET", payload: e.target.value });
   };
+  const FindFullInfoRecepiess=()=>{
+    if(State.isAdded==false){
+      dispatch(FindFullInfoRecepies(State))
+    }
+    debugger
+    for(let k of State.YourRecepies){
+      if(k.diets[0]==State.Diet){
+        if(k.cuisines[0]==State.cuisine){
+          for(let z of State.YourRecepies.dishTypes){
+          if(State.Category==z){
+            dispatch({type:'FILTER_RECEPIES',payload:k})
+          }
+          }
+        }
+      }
+    }
+        
+  }
   return (
     <div className="FilterRecepies">
       <div className="select">
@@ -50,7 +69,7 @@ export default function FindBySettings() {
           <option value={"Paleo"}>Paleo</option>
         </select>
       </div>
-      <button className="FindRecepies" onClick={dispatch(FindFullInfoRecepies)}>
+      <button className="FindRecepies" onClick={FindFullInfoRecepiess}>
         Подобрать рецепты
       </button>
     </div>
