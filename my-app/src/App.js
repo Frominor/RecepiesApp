@@ -13,7 +13,7 @@ function App() {
       <div className='container'>
       <Header></Header>
      <Routes>
-     <Route  index element={ <Main></Main>}></Route>
+     <Route  path='/' index element={ <Main></Main>}></Route>
       <Route path='mybookofrecepies' element={<MyBookOfRecepies></MyBookOfRecepies>}></Route>
       <Route path='aboutdish' element={<AboutDish></AboutDish>}></Route>
       

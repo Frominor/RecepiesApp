@@ -11,6 +11,7 @@ export default function MyBookOfRecepies({}) {
  
   React.useEffect(()=>{
     dispatch({type:'ADD_RECEPT',payload:true})
+    console.log(State)
   },[])
   return (
     <div className="MyBookOfRecepies">
@@ -24,9 +25,9 @@ export default function MyBookOfRecepies({}) {
       <div>
         {State?.YourRecepies?.length > 0 ? (
           State?.YourRecepies?.map((item) => {
-                {console.log(item)}
+                
           return <DishCard
-              key={item.title}
+              key={item.id}
               title={item.title}
               img={item.image}
               dishTypes={item.dishTypes}

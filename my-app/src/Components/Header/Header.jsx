@@ -6,20 +6,32 @@ import hat from './hat.png'
 import {Route,Routes,NavLink, Link} from 'react-router-dom'
 import {CSSTransition} from 'react-transition-group'
 import Register from "../Register/Register";
+import {GetRandomProducts} from "../asyncActions/GetRandomProducts";
 import { useDispatch, useSelector } from "react-redux";
+import RecipeSearch from "../RecipeSearch/RecipeSearch";
 export default function Header({}){
+  const State=useSelector(state=>state)
 const OpenLogWindow=()=>{
-  dispatch({type:'CHANGE_POPUP',payload:!OpenClosePopup})
+  dispatch({type:'CHANGE_POPUP',payload:!State.OpenClosePopup})
+}
+const fetchRandomRecepies=()=>{
+  dispatch(GetRandomProducts())
 }
   const dispatch=useDispatch()
-  const OpenClosePopup=useSelector((state)=>state.OpenClosePopup)
   const noderef=React.useRef(null)
+  const OpenFindWindow=()=>{
+    dispatch({type:'OpenCloseFindWindow',payload:true})
+  }
 return (<div className="Header">
-   <CSSTransition ref={noderef} in={OpenClosePopup} timeout={600} classNames={'my-node'} mountOnEnter unmountOnExit>
-         <Register></Register>
+   <CSSTransition ref={noderef} in={State.OpenClosePopup} timeout={600} classNames={'my-node'} mountOnEnter unmountOnExit>
+         <Register ></Register>
+   </CSSTransition>
+
+   <CSSTransition ref={noderef} in={State.OpenCloseFindWindow} timeout={100} className={'my-node2'} mountOnEnter unmountOnExit>
+   <RecipeSearch State={State} ></RecipeSearch>
    </CSSTransition>
      <div className='Header_Left_Side'>
-          <h1 ><Link to={'/'}>Еда</Link></h1>
+          <h1 ><Link to={'/'} onClick={fetchRandomRecepies}>Еда</Link></h1>
           <ul className='Header_menu'>
             <li>Рецепты</li>
             <li><a href="https://eda.ru/journal" target={'_blank'}>Журнал "Еда"</a></li>
@@ -29,7 +41,7 @@ return (<div className="Header">
             <div className='Header_Right_Side'>
                 <div> 
                 <img src={lupa}></img>
-                    <button>Поиск по сайту</button></div>
+                    <button onClick={OpenFindWindow}>Поиск по сайту</button></div>
              <div>
                 <img src={book}></img>
                 <button ><Link to={'mybookofrecepies'}>Моя книга рецептов</Link></button></div>

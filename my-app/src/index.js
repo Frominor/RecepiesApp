@@ -12,12 +12,14 @@ const initialState={
     Category:[],
     Diet:[],
     cuisine:[],
-    TopDayProducts:[],
+    TopDayProducts:['Beef','Pasta','Tomato'],
     Recepies:[],
     OpenClosePopup:false,
+    OpenCloseFindWindow:false,
     YourRecepies:[],
     FilteredRecepies:[],
-    Ingredients:null,
+    FindedRecepies:[],
+    ChangeDispatch:false,
     isActive:false,
     isAdded:false
 }
@@ -28,11 +30,13 @@ const  reducer=(state=initialState,action)=>{
      case  'ADD_CUISINE':return {...state,cuisine:action.payload}
      case 'ADD_RECEPIES':return {...state,Recepies:action.payload}
      case 'CHANGE_POPUP':return {...state,OpenClosePopup:action.payload}
-     case 'ADD_YOURRECEPIES': return {...state,YourRecepies:action.payload}
-     case 'ADD_INGREDIENTS': return {...state,Ingredients:action.payload}
      case 'CHANGE_ACTIVE':return {...state,isActive:action.payload}
+      case 'ADD_ABOUT_RECEPT':return {...state,YourRecepies:action.payload}
      case 'ADD_RECEPT':return {...state,isAdded:action.payload}
+     case 'SHOW_FIND_RECEPT':return {...state, FindedRecepies:[...state.FindedRecepies,action.payload]}
      case 'FILTER_RECEPIES':return{...state,FilteredRecepies:[...state.FilteredRecepies,action.payload]}
+     case 'OpenCloseFindWindow':return {...state,OpenCloseFindWindow:action.payload}
+     case 'CHANGE_DISPATCH':return {...state,ChangeDispatch:action.payload}
      default:return state
     }
     }

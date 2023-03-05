@@ -5,18 +5,23 @@ import DishCard from "../DishCard/DishCard";
 import SortByPriceAndCalories from "../SortBy/SortByPriceAndCalories";
 import FindBySettings from "../ReUseComponents/FindBySettings";
 import {GetRandomProducts} from "../asyncActions/GetRandomProducts";
+import { fetchRecepies } from "../asyncActions/RecepiesThunk";
 export default function Main({}) {
  const dispatch=useDispatch()
  const State=useSelector((state)=>state)
-
+console.log(State)
      const fetchRandomRecepies=()=>{
       dispatch(GetRandomProducts())
+    }
+    const fetchRecepiesInTopProducts=(e)=>{
+        dispatch(fetchRecepies(e))
+        
     }
     function ShowAddButton(){
       dispatch({type:'ADD_RECEPT',payload:false})
     }
   React.useEffect(()=>{
-
+   fetchRandomRecepies()
   ShowAddButton()
   },[])
  
@@ -37,18 +42,22 @@ export default function Main({}) {
         <div className="Rows">______________</div>
         <div className="Rows">______________</div>
       </div>
-
-      <div className="TopIngr">
-        <p>
-          Топ три продукта дня:{" "}
-          
+      <p>
+          Топ три продукта дня:
         </p>
+      <div className="TopIngr">
+       
+        {State.TopDayProducts.map((item)=>{
+             return <li onClick={(e)=> fetchRecepiesInTopProducts(e)} className="TopProduct">{item}</li>
+          })}
+          
         <br></br>
       </div>
          <SortByPriceAndCalories></SortByPriceAndCalories>
       <div className="Recepies">
-        {State.Recepies.map((item)=>{
-          return <DishCard State={State} key={item.id} id={item.id} title={item.title} img={item.image} dishTypes={item.dishTypes} cuisines={item.cuisines} servings={item.servings} pricePerServing={item.pricePerServing} aggregateLikes={item.aggregateLikes}></DishCard>
+       
+        {State?.Recepies?.map((item)=>{
+          return <DishCard State={State} nutrition={item.nutrition} key={item.id} extendedIngredients={item.extendedIngredients}id={item.id} title={item.title} img={item.image} dishTypes={item.dishTypes} cuisines={item.cuisines} servings={item.servings} pricePerServing={item.pricePerServing} aggregateLikes={item.aggregateLikes}></DishCard>
         })}
       </div>
       <div className="Footer">

@@ -4,12 +4,13 @@
 
 }
 .App{
-  background-color:grey;
+  background-color:black
+
 }
 .container{
   max-width: 1200px;
   position: relative;
-  min-height: 750px;
+  min-height: 783px;
   margin: 0 auto;
   height: auto;
   background-color: white;

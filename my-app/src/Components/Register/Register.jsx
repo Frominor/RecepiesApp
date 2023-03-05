@@ -3,6 +3,7 @@ import "./Register.css";
 import user from "./user.png";
 import email from "./email.png";
 import lock from "./padlock.png";
+import close from './close.png'
 import {useForm} from 'react-hook-form'
 import { useDispatch, useSelector } from "react-redux";
 export default function Register({}) {
@@ -15,6 +16,7 @@ export default function Register({}) {
   return (
     <div className="RegisterIcon">
         <form onSubmit={handleSubmit(onSubmit)}>
+          <img src={close} className='RegisterIcon_Close' onClick={onSubmit}></img>
           <h1>Окно регистрации</h1>
           <div className="Name">
             <img src={user}></img>

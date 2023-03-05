@@ -6,8 +6,8 @@ import serving from './servings.png'
 import food from './food.png'
 import dollar from './dollar.png'
 import {AddToRecepiesBook} from "../asyncActions/AddToRecepiesBook";
-import { fetchRecepies } from "../asyncActions/RecepiesThunk";
-export default function DishCard({title,img,cuisines,servings,pricePerServing,dishTypes,id}){
+import { AboutRecepies } from "../asyncActions/AboutRecepies";
+export default function DishCard({title,img,cuisines,servings,pricePerServing,dishTypes,id,extendedIngredients,nutrition}){
 const State=useSelector(state=>state)
    const dispatch=useDispatch()
 
@@ -17,6 +17,9 @@ const State=useSelector(state=>state)
     dispatch({type:'ADD_RECEPIES',payload:data.results})
   }
 
+ if(extendedIngredients===undefined){
+  extendedIngredients=[]
+ }
   const SearchForType=async(e)=>{
     let res=await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=b31827e8574a44e0ae4737c8ebc42229&type=${e.target.ingridients}&addRecipeInformation=true&addRecipeNutrition=true&number=10`)
                  let data=await  res.json()
@@ -24,7 +27,7 @@ const State=useSelector(state=>state)
   }
 
   const FetchRecepies=(e)=>{
-    dispatch(fetchRecepies(e))
+    dispatch(AboutRecepies(e))
   }
 
 const AddReceptToRecepiesBook=()=>{
@@ -52,7 +55,7 @@ const AddReceptToRecepiesBook=()=>{
                 </div>
                <div className="Ingridients">
                 <img src={food}></img>
-               <h3>{2} Ingridients</h3>
+               <h3>{extendedIngredients?.length||nutrition.ingredients.length} Ingridients</h3>
                </div>
                </div>
                <div className="Price">
@@ -61,9 +64,9 @@ const AddReceptToRecepiesBook=()=>{
                </div>
                </div>
                </div>
+               <div className="Add">
+            {State.isAdded?<span></span>: <button  value={id} onClick={AddReceptToRecepiesBook} className='Add_Button'>Add to Recepies Book</button>}
           </div>
-          <div className="Add">
-            {State.isAdded?<span></span>: <button  value={id} onClick={AddReceptToRecepiesBook}>Add to Recepies Book</button>}
           </div>
         </div>
     )
