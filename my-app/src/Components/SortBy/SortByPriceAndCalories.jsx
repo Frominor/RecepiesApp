@@ -2,73 +2,79 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 export default function SortByPriceAndCalories({}){
     const dispatch=useDispatch()
-    const State=useSelector((state)=>state)
+    const LoadFilteredRecepies=(filteredRecepies)=>{
+      dispatch({type:'ADD_RECEPIES',payload:filteredRecepies})
+    }
+    const ChangeActiveSortButton=()=>{
+      dispatch({type:'CHANGE_ACTIVE',payload:!State.BoolState.isActive})
+    }
+    const State=useSelector((state=>state))
     const Filter=()=>{
-      if(!State.isAdded){
-        if(!State.isActive){
-          for(let i=0;i<State.Recepies.length;i++){
-            for(let k =i+1;k<State.Recepies.length;k++){
-              if(Math.floor(State.Recepies[i].pricePerServing)<Math.floor(State.Recepies[k].pricePerServing)){
-                let float=State.Recepies[k]
-                State.Recepies[k]=State.Recepies[i]
-                State.Recepies[i]=float
+      if(!State.BoolState.isAdded){
+        if(!State.BoolState.isActive){
+          for(let i=0;i<State.Recepies.Recepies.length;i++){
+            for(let k =i+1;k<State.Recepies.Recepies.length;k++){
+              if(Math.floor(State?.Recepies?.Recepies[i]?.pricePerServing)<Math.floor(State?.Recepies?.Recepies[k]?.pricePerServing)){
+                let float=State.Recepies.Recepies[k]
+                State.Recepies.Recepies[k]=State.Recepies.Recepies[i]
+                State.Recepies.Recepies[i]=float
               }
             }
           }
-          let filteredRecepies=[...State.Recepies]
-          dispatch({type:'ADD_RECEPIES',payload:filteredRecepies})
+          let filteredRecepies=[...State.Recepies.Recepies]
+          LoadFilteredRecepies(filteredRecepies)
         }else{
-          for(let i=0;i<State?.Recepies.length;i++){
-            for(let k =i+1;k<State?.Recepies?.length;k++){
-              if(State?.Recepies[i]?.nutrition?.nutrients[0]?.amount <State?.Recepies[k]?.nutrition?.nutrients[0]?.amount){
-                let float=State?.Recepies[k]
-                State.Recepies[k]=State.Recepies[i]
-                State.Recepies[i]=float
+          for(let i=0;i<State?.Recepies.Recepies.length;i++){
+            for(let k =i+1;k<State?.Recepies.Recepies?.length;k++){
+              if(State?.Recepies.Recepies[i]?.nutrition?.nutrients[0]?.amount <State?.Recepies.Recepies[k]?.nutrition?.nutrients[0]?.amount){
+                let float=State?.Recepies.Recepies[k]
+                State.Recepies.Recepies[k]=State.Recepies.Recepies[i]
+                State.Recepies.Recepies[i]=float
               }
             }
           }
          
-          let filteredRecepies=[...State.Recepies]
-          dispatch({type:'ADD_RECEPIES',payload:filteredRecepies})
+          let filteredRecepies=[...State.Recepies.Recepies]
+          LoadFilteredRecepies(filteredRecepies)
         }
-        dispatch({type:'CHANGE_ACTIVE',payload:!State.isActive})
+        ChangeActiveSortButton()
        }else{
-        if(!State.isActive){
-          for(let i=0;i<State.YourRecepies.length;i++){
-            for(let k =i+1;k<State.YourRecepies.length;k++){
-              if(Math.floor(State.YourRecepies[i].pricePerServing)<Math.floor(State.YourRecepies[k].pricePerServing)){
-                let float=State.YourRecepies[k]
-                State.YourRecepies[k]=State.YourRecepies[i]
-                State.YourRecepies[i]=float
+        if(!State.BoolState.isActive){
+          for(let i=0;i<State.Recepies.YourRecepies.length;i++){
+            for(let k =i+1;k<State.Recepies.YourRecepies.length;k++){
+              if(Math.floor(State.Recepies.YourRecepies[i].pricePerServing)<Math.floor(State.Recepies.YourRecepies[k].pricePerServing)){
+                let float=State.Recepies.YourRecepies[k]
+                State.Recepies.YourRecepies[k]=State.Recepies.YourRecepies[i]
+                State.Recepies.YourRecepies[i]=float
               }
             }
           }
-          let filteredRecepies=[...State.YourRecepies]
-          dispatch({type:'ADD_RECEPIES',payload:filteredRecepies})
+          let filteredRecepies=[...State.Recepies.YourRecepies]
+          LoadFilteredRecepies(filteredRecepies)
         }else{
-          for(let i=0;i<State?.YourRecepies.length;i++){
-            for(let k =i+1;k<State?.YourRecepies?.length;k++){
-              if(State?.YourRecepies[i]?.nutrition?.nutrients[0]?.amount <State?.YourRecepies[k]?.nutrition?.nutrients[0]?.amount){
-                let float=State?.YourRecepies[k]
-                State.YourRecepies[k]=State.YourRecepies[i]
-                State.YourRecepies[i]=float
+          for(let i=0;i<State?.Recepies.YourRecepies.length;i++){
+            for(let k =i+1;k<State?.Recepies.YourRecepies?.length;k++){
+              if(State?.Recepies.YourRecepies[i]?.nutrition?.nutrients[0]?.amount <State?.Recepies.YourRecepies[k]?.nutrition?.nutrients[0]?.amount){
+                let float=State?.Recepies.YourRecepies[k]
+                State.Recepies.YourRecepies[k]=State.Recepies.YourRecepies[i]
+                State.Recepies.YourRecepies[i]=float
               }
             }
           }
          
-          let filteredRecepies=[...State.YourRecepies]
-          dispatch({type:'ADD_RECEPIES',payload:filteredRecepies})
+          let filteredRecepies=[...State.Recepies.YourRecepies]
+          LoadFilteredRecepies(filteredRecepies)
         }
-        dispatch({type:'CHANGE_ACTIVE',payload:!State.isActive})
+        ChangeActiveSortButton()
        }
        }
       
       
     return<div className="FindedRecepies">          
-    <ul className="SortBy">
+    <ul className="FindedRecepies_SortBy">
         <p>Сортировать:</p>
-        <li className={"SortButton Popular " +  (State.isActive? 'unactive':'active')} onClick={Filter}>по цене</li>
-                  <li className={"SortButton Calorie " +  (State.isActive? 'active':'unactive')} onClick={Filter}>по калорийности</li>
+        <li className={"FindedRecepies_SortButton Popular " +  (State.BoolState.isActive? 'unactive':'active')} onClick={Filter}>по цене</li>
+                  <li className={"FindedRecepies_SortButton Calorie " +  (State.BoolState.isActive? 'active':'unactive')} onClick={Filter}>по калорийности</li>
     </ul>
   </div>
 }

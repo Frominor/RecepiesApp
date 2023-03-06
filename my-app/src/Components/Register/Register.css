@@ -69,7 +69,7 @@ form{
 .btn_Log:hover{
 background-color: #000000
 }
-.Name,.Email,.Password,.Confirm_password{
+.RegisterIcon_Name,.RegisterIcon,.RegisterIcon_Password{
     display: flex;
     align-items:center;
     justify-content: center
@@ -78,15 +78,16 @@ background-color: #000000
 form>h1{
     margin-bottom: 30px;
 }
+
 .Error{
     position: absolute;
     color: red;
-    right: 10.4%
+    right: 2.4%
 }
-.email{
-    right: 13.5%;
+.email,.name{
+    right: 6.5%;
 }
-.name{
+.RegisterIcon_Input_Name{
     right: 13.5%;
 }
 .RegisterIcon_Close{

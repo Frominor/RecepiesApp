@@ -9,7 +9,6 @@ import { fetchRecepies } from "../asyncActions/RecepiesThunk";
 export default function Main({}) {
  const dispatch=useDispatch()
  const State=useSelector((state)=>state)
-console.log(State)
      const fetchRandomRecepies=()=>{
       dispatch(GetRandomProducts())
     }
@@ -21,7 +20,7 @@ console.log(State)
       dispatch({type:'ADD_RECEPT',payload:false})
     }
   React.useEffect(()=>{
-   fetchRandomRecepies()
+fetchRandomRecepies()
   ShowAddButton()
   },[])
  
@@ -38,26 +37,24 @@ console.log(State)
       </p>
       
       <div className="ThreeRows">
-        <div className="Rows">______________</div>
-        <div className="Rows">______________</div>
-        <div className="Rows">______________</div>
+        <div className="ThreeRows_Row">______________</div>
+        <div className="ThreeRows_Row">______________</div>
+        <div className="ThreeRows_Row">______________</div>
       </div>
       <p>
           Топ три продукта дня:
         </p>
       <div className="TopIngr">
-       
-        {State.TopDayProducts.map((item)=>{
-             return <li onClick={(e)=> fetchRecepiesInTopProducts(e)} className="TopProduct">{item}</li>
+        {State.Recepies.TopDayProducts.map((item)=>{
+             return <li onClick={(e)=> fetchRecepiesInTopProducts(e)} className="TopIngr_TopProduct">{item}</li>
           })}
           
         <br></br>
       </div>
-         <SortByPriceAndCalories></SortByPriceAndCalories>
+         <SortByPriceAndCalories fetchRecepies={fetchRecepies}></SortByPriceAndCalories>
       <div className="Recepies">
-       
-        {State?.Recepies?.map((item)=>{
-          return <DishCard State={State} nutrition={item.nutrition} key={item.id} extendedIngredients={item.extendedIngredients}id={item.id} title={item.title} img={item.image} dishTypes={item.dishTypes} cuisines={item.cuisines} servings={item.servings} pricePerServing={item.pricePerServing} aggregateLikes={item.aggregateLikes}></DishCard>
+        {State?.Recepies?.Recepies?.map((item)=>{
+          return <DishCard State={State.Recepies} nutrition={item.nutrition} key={item.id} extendedIngredients={item.extendedIngredients}id={item.id} title={item.title} img={item.image} dishTypes={item.dishTypes} cuisines={item.cuisines} servings={item.servings} pricePerServing={item.pricePerServing} aggregateLikes={item.aggregateLikes}></DishCard>
         })}
       </div>
       <div className="Footer">

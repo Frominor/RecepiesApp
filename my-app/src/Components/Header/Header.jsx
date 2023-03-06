@@ -12,7 +12,7 @@ import RecipeSearch from "../RecipeSearch/RecipeSearch";
 export default function Header({}){
   const State=useSelector(state=>state)
 const OpenLogWindow=()=>{
-  dispatch({type:'CHANGE_POPUP',payload:!State.OpenClosePopup})
+  dispatch({type:'CHANGE_POPUP',payload:!State.BoolState.OpenClosePopup})
 }
 const fetchRandomRecepies=()=>{
   dispatch(GetRandomProducts())
@@ -23,11 +23,11 @@ const fetchRandomRecepies=()=>{
     dispatch({type:'OpenCloseFindWindow',payload:true})
   }
 return (<div className="Header">
-   <CSSTransition ref={noderef} in={State.OpenClosePopup} timeout={600} classNames={'my-node'} mountOnEnter unmountOnExit>
+   <CSSTransition ref={noderef} in={State.BoolState.OpenClosePopup} timeout={600} classNames={'my-node'} mountOnEnter unmountOnExit>
          <Register ></Register>
    </CSSTransition>
 
-   <CSSTransition ref={noderef} in={State.OpenCloseFindWindow} timeout={100} className={'my-node2'} mountOnEnter unmountOnExit>
+   <CSSTransition ref={noderef} in={State.BoolState.OpenCloseFindWindow} timeout={100} className={'my-node2'} mountOnEnter unmountOnExit>
    <RecipeSearch State={State} ></RecipeSearch>
    </CSSTransition>
      <div className='Header_Left_Side'>

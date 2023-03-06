@@ -7,20 +7,20 @@ import close from './close.png'
 import {useForm} from 'react-hook-form'
 import { useDispatch, useSelector } from "react-redux";
 export default function Register({}) {
-  const OpenClosePopup=useSelector((state)=>state.OpenClosePopup)
+  const State=useSelector((state)=>state.BoolState)
   const dispatch=useDispatch()
   const {register,watch,handleSubmit,formState:{errors}}=useForm()
   const onSubmit=(data)=>{
-    dispatch({type:'CHANGE_POPUP',payload:!OpenClosePopup})
+    dispatch({type:'CHANGE_POPUP',payload:!State.OpenClosePopup})
   }
   return (
     <div className="RegisterIcon">
         <form onSubmit={handleSubmit(onSubmit)}>
           <img src={close} className='RegisterIcon_Close' onClick={onSubmit}></img>
           <h1>Окно регистрации</h1>
-          <div className="Name">
+          <div className="RegisterIcon_Name">
             <img src={user}></img>
-            <input className="Input" {...register('name',{
+            <input className="RegisterIcon_Input_Name Input" {...register('name',{
               required:'Write correct name',       
             })}
              type={"text"} placeholder="Имя"></input>
@@ -29,7 +29,7 @@ export default function Register({}) {
            )}
           </div>
           <br></br>
-          <div className="Email">
+          <div className="RegisterIcon_Email">
             <img src={email}></img>
             <input  className="Input email" {...register('email',{
               required:'Write correct email',
@@ -45,7 +45,7 @@ export default function Register({}) {
             )}
           </div>
           <br></br>
-          <div className="Password">
+          <div className="RegisterIcon_Password">
             <img src={lock}></img>
             <input className="Input password" {...register('password',{
               required:'Write correct password',            

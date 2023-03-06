@@ -11,20 +11,19 @@ export default function MyBookOfRecepies({}) {
  
   React.useEffect(()=>{
     dispatch({type:'ADD_RECEPT',payload:true})
-    console.log(State)
   },[])
   return (
     <div className="MyBookOfRecepies">
-      <div className="Text">
+      <div className="MyBookOfRecepies_Title">
         <h1>Моя книга рецептов</h1>
         <h5>то,что я люблю</h5>
       </div>
       <FindBySettings State={State}></FindBySettings>
-      <div className="Row"></div>
+      <div className="MyBookOfRecepies_Title_Row Row"></div>
       <SortByPriceAndCalories></SortByPriceAndCalories>
       <div>
-        {State?.YourRecepies?.length > 0 ? (
-          State?.YourRecepies?.map((item) => {
+        {State?.Recepies.BookOfRecepies?.length > 0 ? (
+          State?.Recepies.BookOfRecepies?.map((item) => {
                 
           return <DishCard
               key={item.id}
@@ -40,7 +39,7 @@ export default function MyBookOfRecepies({}) {
             ></DishCard>;
           })
         ) : (
-          <div className="Empty">
+          <div className="MyBookOfRecepies_Empty">
             <img src={pan}></img>
             <h3>
               Ваша книга рецептов пуста.

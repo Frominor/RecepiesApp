@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import './AboutDish.css'
 export default function AboutDish(){
-const State=useSelector(state=>state)
+const State=useSelector(state=>state.Recepies)
   const dispatch=useDispatch()
   if(!State.YourRecepies){
     return null
@@ -17,30 +17,30 @@ const State=useSelector(state=>state)
               <li>Step-By-Step Recipes</li>
             </ul>
           </div>
-         <div className="Title">
+         <div className="Recepies_Title">
         <h1>{State.YourRecepies?.title}</h1>
          </div>
          <h2>Energy value per serving</h2>
-         <div className="NutrientsAndIngridients">
-         <div className="NutritionDescription">
-          <div className="Nutrient Calories">
+         <div className="Recepies_NutrientsAndIngridients">
+         <div className="Recepies_NutritionDescription">
+          <div className="Recepies_Nutrient Calories">
             <h3>Calories</h3>
             <h3>{State.YourRecepies?.nutrition?.nutrients[0]?.amount}</h3>
           </div>
-          <div className="Nutrient Protein">
+          <div className="Recepies_Nutrient Protein">
              <h3>Protein</h3>
              <h3>{State.YourRecepies?.nutrition?.nutrients[8]?.amount}</h3>
           </div>
-          <div className="Nutrient Carbs">
+          <div className="Recepies_Nutrient Carbs">
             <h3>Carbs</h3>
             <h3>{State.YourRecepies?.nutrition?.nutrients[3]?.amount}</h3>
           </div>
-          <div className="Nutrient Fat">
+          <div className="Recepies_Nutrient Fat">
             <h3>Fat</h3>
             <h3>{State.YourRecepies?.nutrition?.nutrients[1]?.amount}</h3>
           </div>
          </div>
-         <div className="Nutrient Ingridients">
+         <div className="Recepies_Nutrient Ingridients">
           <div>
             <h3>Ingridients</h3>
           </div>
@@ -56,8 +56,8 @@ const State=useSelector(state=>state)
             return  item.steps.map((item)=>{
               StepCount++
               
-                return <div className="InstructionBox">
-                  <div className="InstructionSide">
+                return <div className="HowToCook_InstructionBox">
+                  <div className="HowToCook_InstructionSide">
                     <h2>Step {StepCount}:</h2>
                         <p>{item.step}</p>
                   </div>
