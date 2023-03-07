@@ -1,14 +1,12 @@
-*{
+* {
   margin: 0;
   padding: 0;
-
 }
-.App{
+.App {
   height: 100%;
-  background-color:black
-
+  background-color: black;
 }
-.container{
+.container {
   max-width: 1200px;
   position: relative;
   min-height: 100%;
@@ -17,14 +15,14 @@
   background-color: white;
 }
 @media only screen and (width<1200px) {
-  .Header_Left_Side{
-      width: 100%;
+  .Header_Left_Side {
+    width: 100%;
   }
-  .Header_Right_Side{
-      width: 100%;
+  .Header_Right_Side {
+    width: 100%;
   }
 }
-.TopIngr{
+.TopIngr {
   display: flex;
   justify-content: center;
   padding: 10px;

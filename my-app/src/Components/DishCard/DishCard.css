@@ -1,55 +1,54 @@
-.DishCard{
-    display: flex;
-    align-items: flex-start;
-    width: 75%;
+.DishCard {
+  display: flex;
+  align-items: flex-start;
+  width: 75%;
 }
-.DishCard_Img>img{
-    width: 350px;
-    height: 250px;
-    
+.DishCard_Img > img {
+  width: 350px;
+  height: 250px;
 }
-.DishCard_Info{
-    width: 100%;
-    font-size: 20px;
+.DishCard_Info {
+  width: 100%;
+  font-size: 20px;
 }
-.DishCard_Img{
-    margin-left: 3%;
-    margin-bottom: 2%;
+.DishCard_Img {
+  margin-left: 3%;
+  margin-bottom: 2%;
 }
-h6{
-    color: green;
+h6 {
+  color: green;
 }
-h6:hover{
-    text-decoration: underline;
-    cursor: pointer;
+h6:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
-.DishCard_AboutDish{
-    display: flex;
-    font-size: 15px;
-    width: 20%;
-    justify-content: space-between;
+.DishCard_AboutDish {
+  display: flex;
+  font-size: 15px;
+  width: 20%;
+  justify-content: space-between;
 }
-.DishCard_ServingsAndIngridients{
-    display: flex;
-    font-size: 15px;
-    padding: 5px;
-   
-    width:80%;
+.DishCard_ServingsAndIngridients {
+  display: flex;
+  font-size: 15px;
+  padding: 5px;
+
+  width: 80%;
 }
-.DishCard_Servings{
-    display: flex;
+.DishCard_Servings {
+  display: flex;
 }
-.DishCard_Ingridients{
-    margin-left: 10px;
-    display: flex;
+.DishCard_Ingridients {
+  margin-left: 10px;
+  display: flex;
 }
-.DishCard_CuisinesAndTypes{
-    display: flex;
-    width: 30%;
-    justify-content: space-around;
+.DishCard_CuisinesAndTypes {
+  display: flex;
+  width: 30%;
+  justify-content: space-around;
 }
-.DishCard_Price{
-    padding: 5px;
-    display: flex;
-    align-items: center;
+.DishCard_Price {
+  padding: 5px;
+  display: flex;
+  align-items: center;
 }

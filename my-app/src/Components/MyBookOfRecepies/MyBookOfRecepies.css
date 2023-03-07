@@ -1,28 +1,28 @@
-.MyBookOfRecepies{
-    width: 100%;
+.MyBookOfRecepies {
+  width: 100%;
 }
-.MyBookOfRecepies_Title{
-    margin-top: 45px;
-    padding: 15px;
-    display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
+.MyBookOfRecepies_Title {
+  margin-top: 45px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.MyBookOfRecepies_Empty{
-    margin-top: 20px;
-    width: 100%;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.MyBookOfRecepies_Empty {
+  margin-top: 20px;
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.MyBookOfRecepies_Empty>img{
-    width: 150px;
-    height: 150px;
+.MyBookOfRecepies_Empty > img {
+  width: 150px;
+  height: 150px;
 }
-.MyBookOfRecepies_Empty>h3{
-    margin-top: 20px;
-    font-size: 18px;
-    font-weight: 400;
+.MyBookOfRecepies_Empty > h3 {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: 400;
 }

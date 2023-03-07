@@ -1,94 +1,92 @@
-.RecipeSearch{
-    top: 0;
-    left: 0;
-    position: absolute;
-   height: 100%;
-    width: 100%;
+.RecipeSearch {
+  top: 0;
+  left: 0;
+  position: absolute;
+  height: 100%;
+  width: 100%;
 }
-.RecipeSearch_SearchSide{
-    background-color: white;
-    display: flex;
-    align-items: center;
-    height: 10vh;
-    border-bottom: 1px solid black;
-    position: relative;
+.RecipeSearch_SearchSide {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  height: 10vh;
+  border-bottom: 1px solid black;
+  position: relative;
 }
-.RecipeSearch_Title{
-    display: flex;
-    padding-right: 20px;
-    align-items: center;
-    justify-content: center;
-    margin-left: 35px;
-    font-size: 35px;
-    font-weight: 700;
-    border-right: 1px solid grey;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+.RecipeSearch_Title {
+  display: flex;
+  padding-right: 20px;
+  align-items: center;
+  justify-content: center;
+  margin-left: 35px;
+  font-size: 35px;
+  font-weight: 700;
+  border-right: 1px solid grey;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
-.RecipeSearch_FindArea{
-    display: flex;
-    width: 85%;
-    align-items: center;
-    margin-left: 30px;
-    
+.RecipeSearch_FindArea {
+  display: flex;
+  width: 85%;
+  align-items: center;
+  margin-left: 30px;
 }
-.RecipeSearch_FindArea>input{
-    background: none;
-    border: 0px;
-    width: 100%;
-    background: none;
-    outline: none;
-    font-size: 20px;
+.RecipeSearch_FindArea > input {
+  background: none;
+  border: 0px;
+  width: 100%;
+  background: none;
+  outline: none;
+  font-size: 20px;
 }
-.SearchResults{
-    opacity: 0.6;
-    background-color: black;
-  
-    width: 100%;
-    height:70%
-}
-.RecipeSearch_Close{
-    margin-right: 20px;
-    cursor: pointer;
-    
-}
-.FindArea{
-    margin-left: 30px;
-    margin-right: 0px;
-}
-.Finded{
-    height: 30%;
-    width: 100%;
-    position: absolute;
-    background-color: white;
-    z-index: 50;
-    left: 0;
-}
-.RecipeSearch_FindedRecipes_overflowed{
-    width: 100%;
-    height: 20vh;
- overflow-y: scroll;
-    background-color: white;
-}
-.RecipeSearch_FindedRecipes{
-    width: 100%;
-    background-color: white;
-    height: 20vh;
-}
-.RecipeSearch_FindedRecept{
-    display: flex;
-    justify-content: space-between;
-    width: 95%;
-    font-size: 20px;
-    align-items: center;
+.SearchResults {
+  opacity: 0.6;
+  background-color: black;
 
+  width: 100%;
+  height: 70%;
 }
-.RecipeSearch_FindedRecept_Img>img{
-    width: 100px;
-    height: 100px;
+.RecipeSearch_Close {
+  margin-right: 20px;
+  cursor: pointer;
 }
-.Changed{
-    opacity: 0.6;
-    background-color: black;
-    width: 100%;
-    height:91%
+.FindArea {
+  margin-left: 30px;
+  margin-right: 0px;
+}
+.Finded {
+  height: 30%;
+  width: 100%;
+  position: absolute;
+  background-color: white;
+  z-index: 50;
+  left: 0;
+}
+.RecipeSearch_FindedRecipes_overflowed {
+  width: 100%;
+  height: 20vh;
+  overflow-y: scroll;
+  background-color: white;
+}
+.RecipeSearch_FindedRecipes {
+  width: 100%;
+  background-color: white;
+  height: 20vh;
+}
+.RecipeSearch_FindedRecept {
+  display: flex;
+  justify-content: space-between;
+  width: 95%;
+  font-size: 20px;
+  align-items: center;
+}
+.RecipeSearch_FindedRecept_Img > img {
+  width: 100px;
+  height: 100px;
+}
+.Changed {
+  opacity: 0.6;
+  background-color: black;
+  width: 100%;
+  height: 91%;
 }

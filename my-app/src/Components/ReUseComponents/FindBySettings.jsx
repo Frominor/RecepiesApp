@@ -1,8 +1,11 @@
 import React from "react";
-import { useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import { FindFullInfoRecepies } from "../asyncActions/FindFullInfoRecepies";
-export default function FindBySettings({State}) {
+export default function FindBySettings({ State }) {
   const dispatch = useDispatch();
+  const FilterRecepies=(arr)=>{
+    dispatch({ type: "FILTER_RECEPIES", payload: arr });
+  }
   const SelectFoodCategory = (e) => {
     dispatch({ type: "ADD_CATEGORY", payload: e.target.value });
   };
@@ -12,24 +15,24 @@ export default function FindBySettings({State}) {
   const SelectDiet = (e) => {
     dispatch({ type: "ADD_DIET", payload: e.target.value });
   };
-  const FindFullInfoRecepiess=()=>{
-    let arr=[]
-    if(State.BoolState.isAdded==false){
-      dispatch(FindFullInfoRecepies(State.Recepies))
-    }else{
-      for(let k of State.Recepies.BookOfRecepies){
-        debugger
-        if(k.cuisines[0]==State.Recepies.cuisine[0]){
-          if(k.Category==State.Recepies.Category){
-            if(k.dishTypes[0]==State.Recepies.dishTypes[0]){
-             arr.push(k)
+  const FindFullInfoRecepiess = () => {
+    let arr = [];
+    if (State.BoolState.isAdded == false) {
+      dispatch(FindFullInfoRecepies(State.Recepies));
+    } else {
+      for (let k of State.Recepies.BookOfRecepies) {
+        debugger;
+        if (k.cuisines[0] == State.Recepies.cuisine[0]) {
+          if (k.Category == State.Recepies.Category) {
+            if (k.dishTypes[0] == State.Recepies.dishTypes[0]) {
+              arr.push(k);
             }
           }
         }
       }
-      dispatch({type:'FILTER_RECEPIES',payload:arr})
+      FilterRecepies(arr)
     }
-  }
+  };
   return (
     <div className="FilterRecepies">
       <div className="select">
