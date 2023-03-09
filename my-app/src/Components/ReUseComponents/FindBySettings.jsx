@@ -7,13 +7,16 @@ export default function FindBySettings({ State }) {
     dispatch({ type: "FILTER_RECEPIES", payload: arr });
   }
   const SelectFoodCategory = (e) => {
-    dispatch({ type: "ADD_CATEGORY", payload: e.target.value });
+    const value=e.target.value
+    dispatch({ type: "ADD_CATEGORY", payload: value });
   };
   const SelectKitchen = (e) => {
-    dispatch({ type: "ADD_CUISINE", payload: e.target.value });
+    const value=e.target.value
+    dispatch({ type: "ADD_CUISINE", payload: value});
   };
   const SelectDiet = (e) => {
-    dispatch({ type: "ADD_DIET", payload: e.target.value });
+    const value=e.target.value
+    dispatch({ type: "ADD_DIET", payload: value});
   };
   const FindFullInfoRecepiess = () => {
     let arr = [];

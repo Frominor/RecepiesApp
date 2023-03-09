@@ -65,19 +65,19 @@ export default function Header({}) {
         </ul>
       </div>
       <div className="Header_Right_Side">
-        <div>
+        <div className>
           <img src={lupa}></img>
-          <button onClick={OpenFindWindow}>Поиск по сайту</button>
+          <button className="Header_Button" onClick={OpenFindWindow}>Поиск по сайту</button>
         </div>
-        <div>
+        <div className="SearchRec">
           <img src={book}></img>
-          <button>
+          <button className="Header_Button">
             <Link to={"mybookofrecepies"}>Моя книга рецептов</Link>
           </button>
         </div>
         <div className="SignIn">
           <img src={hat}></img>
-          <button onClick={OpenLogWindow}>Войти</button>
+          <button onClick={OpenLogWindow} className="Header_Button">Войти</button>
         </div>
       </div>
     </div>

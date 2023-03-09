@@ -13,7 +13,8 @@ export default function Main({}) {
     dispatch(GetRandomProducts());
   };
   const fetchRecepiesInTopProducts = (e) => {
-    dispatch(fetchRecepies(e));
+    const value=e.target.innerHTML
+    dispatch(fetchRecepies(value));
   };
   function ShowAddButton() {
     dispatch({ type: "ADD_RECEPT", payload: false });
@@ -44,7 +45,7 @@ export default function Main({}) {
       <div className="TopIngr">
         {State.Recepies.TopDayProducts.map((item) => {
           return (
-            <li
+            <li key={item.id}
               onClick={(e) => fetchRecepiesInTopProducts(e)}
               className="TopIngr_TopProduct"
             >

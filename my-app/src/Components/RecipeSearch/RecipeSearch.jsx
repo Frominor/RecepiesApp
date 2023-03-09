@@ -3,12 +3,14 @@ import { useDispatch } from "react-redux";
 import "./RecipeSearch.css";
 import close from "./close.png";
 import lupa from "./lupa.png";
+import {debounce} from 'lodash-es'
 import { FindWrittenRecepies } from "../asyncActions/FindWrittenRecepies";
 import SearchButton from "../ReUseComponents/SearchButton";
 export default function RecipeSearch({ State }) {
   const dispatch = useDispatch();
   const FindRecepies = (e) => {
-    dispatch(FindWrittenRecepies(e));
+    const value=e.target.value
+    dispatch(FindWrittenRecepies(value));
   };
   const CloseSearchWindow = () => {
     dispatch({ type: "OpenCloseFindWindow", payload: false });
@@ -20,7 +22,13 @@ export default function RecipeSearch({ State }) {
     let focusInput = document.querySelector("input");
     focusInput.focus();
     ShowFindRecept();
-  }, []);
+  },[]);
+  const makeRequest=React.useCallback(
+    debounce((e)=>{
+    return FindRecepies(e)
+  },300),
+  [])
+ 
   return (
     <div className="RecipeSearch">
       <div className="RecipeSearch_SearchSide SearchSide">
@@ -31,7 +39,7 @@ export default function RecipeSearch({ State }) {
             type={"text"}
             placeholder="Search By ingridients"
             onChange={(e) => {
-              return FindRecepies(e);
+              return makeRequest(e)
             }}
           ></input>
           <img

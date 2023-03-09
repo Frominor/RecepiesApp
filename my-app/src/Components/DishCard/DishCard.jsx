@@ -6,6 +6,7 @@ import serving from "./servings.png";
 import food from "./food.png";
 import dollar from "./dollar.png";
 import { AboutRecepies } from "../asyncActions/AboutRecepies";
+import { SearchForCuisine } from "../asyncActions/SearchForCuisine";
 import SearchButton from "../ReUseComponents/SearchButton";
 export default function DishCard({
   title,
@@ -20,25 +21,19 @@ export default function DishCard({
 }) {
   const State = useSelector((state) => state.BoolState);
   const dispatch = useDispatch();
-
-  const SearchForCuisine = async (e) => {
-    let res = await fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=b31827e8574a44e0ae4737c8ebc42229&cuisine=${e.target.innerHTML}&addRecipeInformation=true&addRecipeNutrition=true&number=10`
-    );
-    let data = await res.json();
-    dispatch({ type: "ADD_RECEPIES", payload: data.results });
+const SearchForType=(e)=>{
+  let value=e.target.innerHTML
+  let bool=false
+  dispatch(SearchForCuisine(value,bool))
+}
+  const SearchForCuisines =(e) => {
+    let value=e.target.innerHTML
+      let bool=true
+   dispatch(SearchForCuisine(value,bool))
   };
-
-  const SearchForType = async (e) => {
-    let res = await fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=b31827e8574a44e0ae4737c8ebc42229&type=${e.target.ingridients}&addRecipeInformation=true&addRecipeNutrition=true&number=10`
-    );
-    let data = await res.json();
-    dispatch({ type: "ADD_RECEPIES", payload: data.results });
-  };
-
   const FetchRecepies = (e) => {
-    dispatch(AboutRecepies(e));
+    const value=e.target.innerHTML
+    dispatch(AboutRecepies(value));
   };
 
   return (
@@ -49,17 +44,17 @@ export default function DishCard({
       <div className="DishCard_Info">
         {cuisines.length > 0 ? (
           <div className="DishCard_CuisinesAndTypes">
-            <h6 onClick={SearchForCuisine}>{cuisines[0]?.toUpperCase()}</h6>
-            <h6 onClick={SearchForType}>{dishTypes[0]?.toUpperCase()}</h6>
+            <button className="SearchFor" onClick={SearchForCuisines}>{cuisines[0]?.toUpperCase()}</button>
+            <button className="SearchFor" onClick={SearchForType}>{dishTypes[0]?.toUpperCase()}</button>
           </div>
         ) : (
-          <h6 onClick={SearchForType}>{dishTypes[0]?.toUpperCase()}</h6>
+          <button className="SearchFor" onClick={SearchForType}>{dishTypes[0]?.toUpperCase()}</button>
         )}
 
         <div>
-          <h3 onClick={FetchRecepies}>
+          <button className="ToAboutDish" onClick={FetchRecepies}>
             <Link to={"aboutdish"}>{title}</Link>
-          </h3>
+          </button>
           <div className="DishCard_ServingAndPrice">
             <div className="DishCard_ServingsAndIngridients">
               <div className="DishCard_Servings">

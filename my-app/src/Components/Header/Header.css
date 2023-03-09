@@ -39,11 +39,16 @@
   align-items: center;
   border-right: 1px solid grey;
 }
-button {
+
+.Header_Button{
   padding: 10px;
   background: none;
   cursor: pointer;
+  outline: none;
   border: 0px;
+}
+.Header_Button:hover{
+    color: red;
 }
 img {
   margin-right: 5px;
